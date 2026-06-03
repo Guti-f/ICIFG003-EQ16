@@ -38,29 +38,51 @@ Proyecto académico desarrollado para la asignatura **ICIF G003 — Aplicaciones
 
 ICIFG003-EQ16/
 ├── gutibackend/                          # API REST en Spring Boot
+
 │   └── src/main/java/com/colegio/backend/
+
 │       ├── BackendApplication.java
+
 │       ├── CorsConfig.java
 │       ├── auth/                         # Autenticación
+
 │       ├── apoderado/                    # CRUD Apoderados
+
 │       ├── profesor/                     # CRUD Profesores
+
 │       └── entrevista/                   # Funcionalidad de Entrevistas
+
 │
+
 ├── gutifrontend/                         # SPA en Angular
+
 │   └── src/app/
+
 │       ├── core/                         # Servicios y guards globales
+
 │       │   ├── guards/auth.guard.ts
+
 │       │   └── services/auth.service.ts
 │       └── features/                     # Módulos por funcionalidad
+
 │           ├── home/                     # Landing page
+
 │           ├── auth/                     # Login
+
 │           ├── menu/                     # Menú principal
+
 │           ├── apoderados/               # CRUD Apoderados
+
 │           ├── profesores/               # CRUD Profesores
+
 │           └── entrevistas/              # Funcionalidad de Entrevistas
+
 │
+
 ├── docker-compose.yml                    # PostgreSQL en contenedor (opcional)
+
 └── README.MD
+
 
 ---
 
