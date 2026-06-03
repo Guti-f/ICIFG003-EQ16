@@ -38,31 +38,127 @@ Proyecto académico desarrollado para la asignatura **ICIF G003 — Aplicaciones
 
 ICIFG003-EQ16/
 
-├── gutibackend/                          # API REST en Spring Boot
-│   └── src/main/java/com/colegio/backend/
-│       ├── BackendApplication.java
-│       ├── CorsConfig.java
-│       ├── auth/                         # Autenticación
-│       ├── apoderado/                    # CRUD Apoderados
-│       ├── profesor/                     # CRUD Profesores
-│       └── entrevista/                   # Funcionalidad de Entrevistas
-│
-├── gutifrontend/                         # SPA en Angular
-│   └── src/app/
-│       ├── core/                         # Servicios y guards globales
-│       │   ├── guards/auth.guard.ts
-│       │   └── services/auth.service.ts
-|       └── features/                     # Módulos por funcionalidad
-│           ├── home/                     # Landing page
-│           ├── auth/                     # Login
-│           ├── menu/                     # Menú principal
-│           ├── apoderados/               # CRUD Apoderados
-│           ├── profesores/               # CRUD Profesores
-│           └── entrevistas/              # Funcionalidad de Entrevistas
-│
-├── docker-compose.yml                    # PostgreSQL en contenedor (opcional)
-└── README.MD
+├── gutibackend/                                # API REST en Spring Boot
 
+│  ├── src/main/
+
+|    |── java/com/colegio/backend/
+
+│      ├── BackendApplication.java
+
+│      ├── CorsConfig.java
+
+│      ├── auth/                               # Autenticación
+
+|        ├── AuthController.java
+
+|        ├── DataInitializar.java
+
+|        ├── LoginRequest.java
+
+|        ├── LoginResponse.java
+
+|        ├── Usuario.java
+
+|        └── UsuarioRepository.java
+
+│      ├── apoderado/                    # CRUD Apoderados
+
+|        ├── Apoderado.java
+
+|        ├── ApoderadoController.java
+
+|        └── ApoderadoRepository.java
+
+│      ├── profesor/                     # CRUD Profesores
+
+|        ├── Profesor.java
+
+|        ├── ProfesorController.java
+
+|        └── ProfesorRepository.java
+
+│      └── entrevista/                   # Funcionalidad de Entrevistas
+
+|        ├── Entrevista.java
+
+|        ├── EntrevistaController.java
+
+|        ├── EntrevistaRepository.java
+
+|        ├── EntrevistaRequest.java
+
+|        └── EstadoEntrevista.java
+
+|    └── resources
+
+|      └── application.properties
+
+│  └── pom.xml
+
+├── gutifrontend/                         # SPA en Angular
+
+|  ├── angular.json
+
+|  ├── package.json
+
+|  ├── tsconfig.json
+
+|  ├── tsconfig.app.json
+
+│  └── src/
+
+|    ├── index.html
+
+|    ├── main.ts
+
+|    ├── styles.css
+
+|    └── app
+
+|      ├── app.config.ts
+
+|      ├── app.component.ts
+
+|      ├── app.routes.ts
+
+│      ├── core/                         # Servicios y guards globales
+
+│        ├── guards/auth.guard.ts
+
+│        └── services/auth.service.ts
+
+|      └── features/                     # Módulos por funcionalidad
+
+│        ├── home/home.component.ts                     # Landing page
+
+│        ├── auth/login.component.ts                     # Login
+
+│        ├── menu/menu.component.ts                     # Menú principal
+
+│        ├── apoderados/               # CRUD Apoderados
+
+│          ├── apoderado.service.ts
+
+│          └── apoderados.component.ts
+
+│        ├── profesores/               # CRUD Profesores
+
+│          ├── profesor.service.ts
+
+│          └── profesores.component.ts
+
+│        └── entrevistas/              # Funcionalidad de Entrevistas
+
+│          ├── entrevista.service.ts
+
+│          └── entrevistas.component.ts
+
+│
+
+├── docker-compose.yml                    # PostgreSQL en contenedor (opcional)
+
+└── README.MD
 
 ---
 
