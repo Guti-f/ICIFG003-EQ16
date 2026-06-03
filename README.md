@@ -40,119 +40,119 @@ ICIFG003-EQ16/
 
 ├── gutibackend/                                # API REST en Spring Boot
 
-│  ├── src/main/
+│    ├── src/main/
 
-|    |── java/com/colegio/backend/
+│        ├── java/com/colegio/backend/
 
-│      ├── BackendApplication.java
+│            ├── BackendApplication.java
 
-│      ├── CorsConfig.java
+│            ├── CorsConfig.java
 
-│      ├── auth/                               # Autenticación
+│            ├── auth/                               # Autenticación
 
-|        ├── AuthController.java
+|                ├── AuthController.java
 
-|        ├── DataInitializar.java
+|                ├── DataInitializar.java
 
-|        ├── LoginRequest.java
+|                ├── LoginRequest.java
 
-|        ├── LoginResponse.java
+|                ├── LoginResponse.java
 
-|        ├── Usuario.java
+|                ├── Usuario.java
 
-|        └── UsuarioRepository.java
+|                └── UsuarioRepository.java
 
-│      ├── apoderado/                    # CRUD Apoderados
+│          ├── apoderado/                    # CRUD Apoderados
 
-|        ├── Apoderado.java
+|              ├── Apoderado.java
 
-|        ├── ApoderadoController.java
+|              ├── ApoderadoController.java
 
-|        └── ApoderadoRepository.java
+|              └── ApoderadoRepository.java
 
-│      ├── profesor/                     # CRUD Profesores
+│          ├── profesor/                     # CRUD Profesores
 
-|        ├── Profesor.java
+|              ├── Profesor.java
 
-|        ├── ProfesorController.java
+|              ├── ProfesorController.java
 
-|        └── ProfesorRepository.java
+|              └── ProfesorRepository.java
 
-│      └── entrevista/                   # Funcionalidad de Entrevistas
+│          └── entrevista/                   # Funcionalidad de Entrevistas
 
-|        ├── Entrevista.java
+|              ├── Entrevista.java
 
-|        ├── EntrevistaController.java
+|              ├── EntrevistaController.java
 
-|        ├── EntrevistaRepository.java
+|              ├── EntrevistaRepository.java
 
-|        ├── EntrevistaRequest.java
+|              ├── EntrevistaRequest.java
 
-|        └── EstadoEntrevista.java
+|              └── EstadoEntrevista.java
 
-|    └── resources
+|        └── resources
 
-|      └── application.properties
+|            └── application.properties
 
-│  └── pom.xml
+│    └── pom.xml
 
 ├── gutifrontend/                         # SPA en Angular
 
-|  ├── angular.json
+|    ├── angular.json
 
-|  ├── package.json
+|    ├── package.json
 
-|  ├── tsconfig.json
+|    ├── tsconfig.json
 
-|  ├── tsconfig.app.json
+|    ├── tsconfig.app.json
 
-│  └── src/
+│    └── src/
 
-|    ├── index.html
+|        ├── index.html
 
-|    ├── main.ts
+|        ├── main.ts
 
-|    ├── styles.css
+|        ├── styles.css
 
-|    └── app
+|        └── app/
 
-|      ├── app.config.ts
+|            ├── app.config.ts
 
-|      ├── app.component.ts
+|            ├── app.component.ts
 
-|      ├── app.routes.ts
+|            ├── app.routes.ts
 
-│      ├── core/                         # Servicios y guards globales
+│            ├── core/                         # Servicios y guards globales
 
-│        ├── guards/auth.guard.ts
+│                ├── guards/auth.guard.ts
 
-│        └── services/auth.service.ts
+│                └── services/auth.service.ts
 
-|      └── features/                     # Módulos por funcionalidad
+|          └── features/                     # Módulos por funcionalidad
 
-│        ├── home/home.component.ts                     # Landing page
+│              ├── home/home.component.ts                     # Landing page
 
-│        ├── auth/login.component.ts                     # Login
+│              ├── auth/login.component.ts                     # Login
 
-│        ├── menu/menu.component.ts                     # Menú principal
+│              ├── menu/menu.component.ts                     # Menú principal
 
-│        ├── apoderados/               # CRUD Apoderados
+│              ├── apoderados/               # CRUD Apoderados
 
-│          ├── apoderado.service.ts
+│                  ├── apoderado.service.ts
 
-│          └── apoderados.component.ts
+│                  └── apoderados.component.ts
 
-│        ├── profesores/               # CRUD Profesores
+│              ├── profesores/               # CRUD Profesores
 
-│          ├── profesor.service.ts
+│                  ├── profesor.service.ts
 
-│          └── profesores.component.ts
+│                  └── profesores.component.ts
 
-│        └── entrevistas/              # Funcionalidad de Entrevistas
+│              └── entrevistas/              # Funcionalidad de Entrevistas
 
-│          ├── entrevista.service.ts
+│                  ├── entrevista.service.ts
 
-│          └── entrevistas.component.ts
+│                  └── entrevistas.component.ts
 
 │
 
