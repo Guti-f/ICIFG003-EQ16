@@ -1,0 +1,61 @@
+<!-- BARRA SUPERIOR -->
+<nav class="navbar navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <span class="navbar-brand mb-0 h4">🎓 Colegio San Sebastián</span>
+    <div class="d-flex align-items-center">
+      <span class="text-white me-3">Hola, {{ usuario()?.nombre }}</span>
+      <button class="btn btn-outline-light btn-sm" (click)="logout()">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENIDO -->
+<div class="container py-5">
+
+  <div class="mb-5">
+    <h1 class="mb-2">Menú principal</h1>
+    <p class="text-muted">Seleccione una opción para comenzar</p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <a routerLink="/apoderados" class="text-decoration-none text-dark">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center p-4">
+            <div style="font-size: 4rem;">👨‍👩‍👧</div>
+            <h4 class="mt-3 mb-2">Apoderados</h4>
+            <p class="text-muted mb-0">Gestión de registros de apoderados</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a routerLink="/profesores" class="text-decoration-none text-dark">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center p-4">
+            <div style="font-size: 4rem;">👨‍🏫</div>
+            <h4 class="mt-3 mb-2">Profesores</h4>
+            <p class="text-muted mb-0">Gestión de registros de profesores</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a routerLink="/entrevistas" class="text-decoration-none text-dark">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center p-4">
+            <div style="font-size: 4rem;">📅</div>
+            <h4 class="mt-3 mb-2">Entrevistas</h4>
+            <p class="text-muted mb-0">Agendar y administrar entrevistas</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
