@@ -1,0 +1,72 @@
+<div class="card mb-4 shadow-sm border-0">
+  <div class="card-body">
+    <h5 class="card-title mb-3">
+      @if (store.selected()) { Editar apoderado } @else { Nuevo apoderado }
+    </h5>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <div class="row g-3">
+
+        <div class="col-md-4">
+          <label class="form-label">RUT *</label>
+          <input class="form-control" formControlName="rut" placeholder="12345678-9" />
+          @if (form.get('rut')?.touched && form.get('rut')?.invalid) {
+            <small class="text-danger">RUT requerido</small>
+          }
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Nombre *</label>
+          <input class="form-control" formControlName="nombre" />
+          @if (form.get('nombre')?.touched && form.get('nombre')?.invalid) {
+            <small class="text-danger">Nombre requerido</small>
+          }
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Apellido *</label>
+          <input class="form-control" formControlName="apellido" />
+          @if (form.get('apellido')?.touched && form.get('apellido')?.invalid) {
+            <small class="text-danger">Apellido requerido</small>
+          }
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Teléfono</label>
+          <input class="form-control" formControlName="telefono" placeholder="+56912345678" />
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Email</label>
+          <input class="form-control" formControlName="email" type="email" />
+          @if (form.get('email')?.touched && form.get('email')?.invalid) {
+            <small class="text-danger">Email inválido</small>
+          }
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Relación</label>
+          <select class="form-select" formControlName="relacion">
+            <option value="">Seleccione...</option>
+            <option value="Padre">Padre</option>
+            <option value="Madre">Madre</option>
+            <option value="Tutor">Tutor</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2" [disabled]="form.invalid">
+          @if (store.selected()) { Actualizar } @else { Guardar }
+        </button>
+        @if (store.selected()) {
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">
+            Cancelar
+          </button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
