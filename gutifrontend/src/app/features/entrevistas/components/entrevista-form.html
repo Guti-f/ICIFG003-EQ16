@@ -1,0 +1,79 @@
+<div class="card mb-4 shadow-sm border-0">
+  <div class="card-body">
+    <h5 class="card-title mb-3">
+      @if (store.selected()) { Editar entrevista } @else { Nueva entrevista }
+    </h5>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label class="form-label">Apoderado *</label>
+          <select class="form-select" formControlName="apoderadoId">
+            <option [ngValue]="null">Seleccione un apoderado...</option>
+            @for (a of apoderadoStore.apoderados(); track a.id) {
+              <option [ngValue]="a.id">{{ a.nombre }} {{ a.apellido }} ({{ a.rut }})</option>
+            }
+          </select>
+          @if (form.get('apoderadoId')?.touched && form.get('apoderadoId')?.invalid) {
+            <small class="text-danger">Apoderado requerido</small>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Profesor *</label>
+          <select class="form-select" formControlName="profesorId">
+            <option [ngValue]="null">Seleccione un profesor...</option>
+            @for (p of profesorStore.profesores(); track p.id) {
+              <option [ngValue]="p.id">{{ p.nombre }} {{ p.apellido }} ({{ p.asignatura }})</option>
+            }
+          </select>
+          @if (form.get('profesorId')?.touched && form.get('profesorId')?.invalid) {
+            <small class="text-danger">Profesor requerido</small>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Fecha y hora *</label>
+          <input class="form-control" type="datetime-local" formControlName="fechaHora" />
+          @if (form.get('fechaHora')?.touched && form.get('fechaHora')?.invalid) {
+            <small class="text-danger">Fecha requerida</small>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Estado *</label>
+          <select class="form-select" formControlName="estado">
+            <option value="Programada">Programada</option>
+            <option value="Realizada">Realizada</option>
+            <option value="Cancelada">Cancelada</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Motivo *</label>
+          <input class="form-control" formControlName="motivo" placeholder="Ej: Conducta del estudiante" />
+          @if (form.get('motivo')?.touched && form.get('motivo')?.invalid) {
+            <small class="text-danger">Motivo requerido</small>
+          }
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Observaciones</label>
+          <textarea class="form-control" formControlName="observaciones" rows="3"
+                    placeholder="Comentarios adicionales..."></textarea>
+        </div>
+
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2" [disabled]="form.invalid">
+          @if (store.selected()) { Actualizar } @else { Agendar }
+        </button>
+        @if (store.selected()) {
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
