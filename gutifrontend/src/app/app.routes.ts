@@ -1,40 +1,27 @@
 import { Routes } from '@angular/router';
+import { HomePage } from './features/home/pages/home-page/home-page';
+import { LoginPage } from './features/auth/pages/login-page/login-page';
+import { MenuPage } from './features/menu/pages/menu-page/menu-page';
 import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  {
-    path: '',
-    loadComponent: () =>
-      import('./features/home/home.component').then(m => m.HomeComponent)
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./features/auth/login.component').then(m => m.LoginComponent)
-  },
-  {
-    path: 'menu',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./features/menu/menu.component').then(m => m.MenuComponent)
-  },
+  { path: '', component: HomePage },
+  { path: 'login', component: LoginPage },
+  { path: 'menu', component: MenuPage, canActivate: [authGuard] },
   {
     path: 'apoderados',
     canActivate: [authGuard],
-    loadComponent: () =>
-      import('./features/apoderados/apoderados.component').then(m => m.ApoderadosComponent)
+    loadChildren: () => import('./features/apoderados/apoderados.routes').then(m => m.APODERADOS_ROUTES)
   },
   {
     path: 'profesores',
     canActivate: [authGuard],
-    loadComponent: () =>
-      import('./features/profesores/profesores.component').then(m => m.ProfesoresComponent)
+    loadChildren: () => import('./features/profesores/profesores.routes').then(m => m.PROFESORES_ROUTES)
   },
   {
     path: 'entrevistas',
     canActivate: [authGuard],
-    loadComponent: () =>
-      import('./features/entrevistas/entrevistas.component').then(m => m.EntrevistasComponent)
+    loadChildren: () => import('./features/entrevistas/entrevistas.routes').then(m => m.ENTREVISTAS_ROUTES)
   },
   { path: '**', redirectTo: '' }
 ];
