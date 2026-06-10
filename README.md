@@ -40,32 +40,32 @@ ICIFG003-EQ16/
 
 ├── gutibackend/                                # API REST en Spring Boot
 |    ├── src/main/
-|        ├── java/com/colegio/backend/
-|            ├── BackendApplication.java
-|            ├── CorsConfig.java
-|            ├── auth/                               # Autenticación
-|                ├── AuthController.java
-|                ├── DataInitializar.java
-|                ├── LoginRequest.java
-|                ├── LoginResponse.java
-|                ├── Usuario.java
-|                └── UsuarioRepository.java
-|            ├── apoderado/                    # CRUD Apoderados
-|                ├── Apoderado.java
-|                ├── ApoderadoController.java
-|                └── ApoderadoRepository.java
-|            ├── profesor/                     # CRUD Profesores
-|                ├── Profesor.java
-|                ├── ProfesorController.java
-|                └── ProfesorRepository.java
-|            └── entrevista/                   # Funcionalidad de Entrevistas
-|                ├── Entrevista.java
-|                ├── EntrevistaController.java
-|                ├── EntrevistaRepository.java
-|                ├── EntrevistaRequest.java
-|                └── EstadoEntrevista.java
-|        └── resources
-|            └── application.properties
+|    |   ├── java/com/colegio/backend/
+|    |   |   ├── BackendApplication.java
+|    |   |   ├── CorsConfig.java
+|    |   |   ├── auth/                               # Autenticación
+|    |   |   |   ├── AuthController.java
+|    |   |   |   ├── DataInitializar.java
+|    |   |   |   ├── LoginRequest.java
+|    |   |   |   ├── LoginResponse.java
+|    |   |   |   ├── Usuario.java
+|    |   |   |   └── UsuarioRepository.java
+|    |   |   ├── apoderado/                    # CRUD Apoderados
+|    |   |   |   ├── Apoderado.java
+|    |   |   |   ├── ApoderadoController.java
+|    |   |   |   └── ApoderadoRepository.java
+|    |   |   ├── profesor/                     # CRUD Profesores
+|    |   |   |   ├── Profesor.java
+|    |   |   |   ├── ProfesorController.java
+|    |   |   |   └── ProfesorRepository.java
+|    |   |   └── entrevista/                   # Funcionalidad de Entrevistas
+|    |   |       ├── Entrevista.java
+|    |   |       ├── EntrevistaController.java
+|    |   |       ├── EntrevistaRepository.java
+|    |   |       ├── EntrevistaRequest.java
+|    |   |       └── EstadoEntrevista.java
+|    |   └── resources
+|    |       └── application.properties
 |    └── pom.xml
 |
 ├── gutifrontend/                         # SPA en Angular
@@ -82,18 +82,18 @@ ICIFG003-EQ16/
 |            ├── app.component.ts
 |            ├── app.routes.ts
 |            ├── core/                         # Servicios y guards globales
-|                ├── guards/auth.guard.ts
-|                └── services/auth.service.ts
+|            |   ├── guards/auth.guard.ts
+|            |   └── services/auth.service.ts
 |            └── features/                     # Módulos por funcionalidad
 |                ├── home/home.component.ts                     # Landing page
 |                ├── auth/login.component.ts                     # Login
 |                ├── menu/menu.component.ts                     # Menú principal
 |                ├── apoderados/               # CRUD Apoderados
-|                    ├── apoderado.service.ts
-|                    └── apoderados.component.ts
+|                |   ├── apoderado.service.ts
+|                |   └── apoderados.component.ts
 |                ├── profesores/               # CRUD Profesores
-|                    ├── profesor.service.ts
-|                    └── profesores.component.ts
+|                |   ├── profesor.service.ts
+|                |   └── profesores.component.ts
 |                └── entrevistas/              # Funcionalidad de Entrevistas
 |                    ├── entrevista.service.ts
 |                    └── entrevistas.component.ts
