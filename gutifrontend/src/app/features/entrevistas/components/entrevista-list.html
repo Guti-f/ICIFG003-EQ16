@@ -1,0 +1,47 @@
+<h3 class="mb-3">Lista de entrevistas</h3>
+
+@if (store.loading()) {
+  <div class="alert alert-info">Cargando entrevistas...</div>
+}
+
+@if (store.error()) {
+  <div class="alert alert-danger">{{ store.error() }}</div>
+}
+
+@if (!store.loading() && store.entrevistas().length === 0) {
+  <div class="alert alert-warning">No hay entrevistas agendadas.</div>
+}
+
+@if (store.entrevistas().length > 0) {
+  <div class="table-responsive">
+    <table class="table table-hover table-striped align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Fecha y hora</th>
+          <th>Apoderado</th>
+          <th>Profesor</th>
+          <th>Motivo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (e of store.entrevistas(); track e.id) {
+          <tr>
+            <td>{{ e.fechaHora | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ e.apoderado.nombre }} {{ e.apoderado.apellido }}</td>
+            <td>{{ e.profesor.nombre }} {{ e.profesor.apellido }}</td>
+            <td>{{ e.motivo }}</td>
+            <td>
+              <span class="badge" [class]="badgeClass(e.estado)">{{ e.estado }}</span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" (click)="editar(e)">Editar</button>
+              <button class="btn btn-sm btn-danger" (click)="eliminar(e.id!)">Eliminar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
