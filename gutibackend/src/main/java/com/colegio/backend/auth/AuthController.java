@@ -3,6 +3,9 @@ package com.colegio.backend.auth;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -14,12 +17,18 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        return usuarioRepository.findByUsername(request.getUsername())
-                .filter(u -> u.getPassword().equals(request.getPassword()))
-                .map(u -> ResponseEntity.ok(
-                        new LoginResponse(true, "Login exitoso", u.getUsername(), u.getNombre())))
-                .orElse(ResponseEntity.status(401).body(
-                        new LoginResponse(false, "Usuario o contraseña incorrectos", null, null)));
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        Optional<Usuario> usuario = usuarioRepository.findByUsername(request.getUsername());
+
+        if (usuario.isPresent() && usuario.get().getPassword().equals(request.getPassword())) {
+            Usuario u = usuario.get();
+            return ResponseEntity.ok(Map.of(
+                "id", u.getId(),
+                "username", u.getUsername(),
+                "nombre", u.getNombre()
+            ));
+        }
+
+        return ResponseEntity.status(401).body(Map.of("error", "Credenciales invalidas"));
     }
 }
