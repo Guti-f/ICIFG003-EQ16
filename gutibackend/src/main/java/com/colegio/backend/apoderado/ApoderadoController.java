@@ -10,47 +10,45 @@ import java.util.List;
 @RequestMapping("/api/apoderados")
 public class ApoderadoController {
 
-    private final ApoderadoRepository repository;
+    private final ApoderadoRepository repo;
 
-    public ApoderadoController(ApoderadoRepository repository) {
-        this.repository = repository;
+    public ApoderadoController(ApoderadoRepository repo) {
+        this.repo = repo;
     }
 
     @GetMapping
-    public List<Apoderado> listar() {
-        return repository.findAll();
+    public List<Apoderado> getAll() {
+        return repo.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Apoderado> obtener(@PathVariable Long id) {
-        return repository.findById(id)
+    public ResponseEntity<Apoderado> getById(@PathVariable Long id) {
+        return repo.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Apoderado crear(@Valid @RequestBody Apoderado apoderado) {
-        return repository.save(apoderado);
+    public Apoderado create(@RequestBody @Valid Apoderado apoderado) {
+        return repo.save(apoderado);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Apoderado> actualizar(@PathVariable Long id,
-                                                 @Valid @RequestBody Apoderado datos) {
-        return repository.findById(id).map(a -> {
-            a.setRut(datos.getRut());
-            a.setNombre(datos.getNombre());
-            a.setApellido(datos.getApellido());
-            a.setTelefono(datos.getTelefono());
-            a.setEmail(datos.getEmail());
-            a.setRelacion(datos.getRelacion());
-            return ResponseEntity.ok(repository.save(a));
-        }).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Apoderado> update(@PathVariable Long id, @RequestBody @Valid Apoderado apoderado) {
+        return repo.findById(id)
+                .map(existing -> {
+                    apoderado.setId(id);
+                    return ResponseEntity.ok(repo.save(apoderado));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        if (!repository.existsById(id)) return ResponseEntity.notFound().build();
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!repo.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repo.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }
